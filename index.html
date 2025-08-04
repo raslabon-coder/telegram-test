@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html lang="ru">
 <head>
   <meta charset="UTF-8" />
   <title>Кликалка Telegram</title>
@@ -51,12 +50,7 @@
       document.getElementById("count").textContent = count;
     }
 
-    // Автоматическая отправка при закрытии WebApp (без вылета)
-    window.addEventListener("unload", function () {
-      setTimeout(() => {
-        tg.sendData(`Кликов: ${count}`);
-      }, 100);  // задержка, чтобы Telegram не закрыл WebApp сразу
-    });
   </script>
 </body>
 </html>
+
