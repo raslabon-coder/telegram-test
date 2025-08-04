@@ -50,11 +50,13 @@
       count++;
       document.getElementById("count").textContent = count;
 
-      tg.sendData(`Кликов: ${count}`);
-    }
+  tg.onEvent('close', () => {
+    tg.sendData(`Финальное количество кликов: ${count}`);
+  });
 
 
   </script>
 </body>
 </html>
+
 
