@@ -32,7 +32,7 @@
     }
   </style>
 
-  <!-- Подключаем Telegram SDK -->
+  <!-- Telegram WebApp SDK -->
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
 </head>
 <body>
@@ -42,21 +42,21 @@
 
   <script>
     const tg = window.Telegram.WebApp;
-    tg.expand(); // разворачивает веб-приложение
+    tg.expand();  // разворачивает WebApp во весь экран
 
     let count = 0;
 
     function clicker() {
       count++;
       document.getElementById("count").textContent = count;
+    }
 
-  tg.onEvent('close', () => {
-    tg.sendData(`Финальное количество кликов: ${count}`);
-  });
-
-
+    // Автоматическая отправка при закрытии WebApp (без вылета)
+    window.addEventListener("unload", function () {
+      setTimeout(() => {
+        tg.sendData(`Кликов: ${count}`);
+      }, 100);  // задержка, чтобы Telegram не закрыл WebApp сразу
+    });
   </script>
 </body>
 </html>
-
-
